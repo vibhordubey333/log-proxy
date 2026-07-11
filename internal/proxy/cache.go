@@ -70,6 +70,10 @@ func (c *Cache) download(ctx context.Context, buildID, logPath, metaPath string)
 		return &CachedLog{Path: logPath, ContentType: string(ct)}, nil
 	}
 
+	if err := os.MkdirAll(c.Dir, 0755); err != nil {
+		return nil, fmt.Errorf("ensuring cache dir exists: %w", err)
+	}
+
 	body, contentType, err := c.Fetcher.Fetch(ctx, buildID)
 	if err != nil {
 		return nil, err
