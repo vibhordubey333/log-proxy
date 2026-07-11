@@ -77,7 +77,7 @@ func (h *Handler) HandleGet(c *gin.Context) {
 	}
 
 	remaining := size - offset
-	if limit <= 0 || limit > remaining {
+	if limit == -1 || limit > remaining {
 		limit = remaining
 	}
 
@@ -95,16 +95,14 @@ func (h *Handler) HandleGet(c *gin.Context) {
 // parseRange reads optional offset/limit query params, defaulting
 // offset to 0 and limit to "rest of file"
 func parseRange(c *gin.Context) (offset, limit int64, err error) {
-	// offset is the number of records to skip before returning results.
-	// It is optional; when omitted, the default value remains 0.
+	limit = -1 // sentinel: not specified
+
 	if v := c.Query("offset"); v != "" {
 		offset, err = strconv.ParseInt(v, 10, 64)
 		if err != nil || offset < 0 {
 			return 0, 0, errInvalidParam("offset")
 		}
 	}
-	// limit is the maximum number of records to return.
-	// It is optional; when omitted, the default value remains 0,
 	if v := c.Query("limit"); v != "" {
 		limit, err = strconv.ParseInt(v, 10, 64)
 		if err != nil || limit < 0 {
