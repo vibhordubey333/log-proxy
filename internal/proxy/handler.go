@@ -93,8 +93,7 @@ func (h *Handler) HandleGet(c *gin.Context) {
 }
 
 // parseRange reads optional offset/limit query params, defaulting
-// offset to 0 and limit to "rest of file" (signalled here as 0,
-// resolved against actual file size by the caller).
+// offset to 0 and limit to "rest of file"
 func parseRange(c *gin.Context) (offset, limit int64, err error) {
 	// offset is the number of records to skip before returning results.
 	// It is optional; when omitted, the default value remains 0.

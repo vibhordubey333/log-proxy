@@ -32,8 +32,9 @@ func (j *JenkinsFetcher) Fetch(ctx context.Context, buildID string) (body io.Rea
 		return nil, "", ErrBuildNotFound
 	}
 	if resp.StatusCode != http.StatusOK {
+		snippet, _ := io.ReadAll(io.LimitReader(resp.Body, 200))
 		resp.Body.Close()
-		return nil, "", fmt.Errorf("%w: jenkins returned %d", ErrUpstreamUnavailable, resp.StatusCode)
+		return nil, "", fmt.Errorf("%w: jenkins returned %d", ErrUpstreamUnavailable, resp.StatusCode, snippet)
 	}
 	return resp.Body, resp.Header.Get("Content-Type"), nil
 }

@@ -1,0 +1,26 @@
+10:23:41 Started by user anonymous
+10:23:41 Building on the built-in node in workspace /var/jenkins_home/workspace/jenkins_master
+10:23:42 Checking out git https://github.com/jenkinsci/jenkins.git into /var/jenkins_home/workspace/jenkins_master
+10:23:42 Commit message: "Fix flaky test in AgentTest"
+10:23:43 [jenkins_master] $ /bin/sh -xe /tmp/jenkins123.sh
+10:23:43 + mvn -B clean install
+10:23:45 [INFO] Scanning for projects...
+10:23:46 Downloading from central: https://repo.maven.apache.org/maven2/junit/junit/4.13/junit-4.13.jar
+10:23:46 Downloading from central: https://repo.maven.apache.org/maven2/junit/junit/4.13/junit-4.13.jar
+10:23:46 Downloading from central: https://repo.maven.apache.org/maven2/junit/junit/4.13/junit-4.13.jar
+10:23:46 Downloading from central: https://repo.maven.apache.org/maven2/junit/junit/4.13/junit-4.13.jar
+10:23:47 [INFO] Downloaded: junit-4.13.jar
+10:23:48 [INFO] Building jenkins-core 2.500-SNAPSHOT
+10:23:49 [INFO] --- maven-compiler-plugin:3.11.0:compile ---
+10:23:49 [INFO] Compiling 214 source files
+10:23:50 [WARNING] deprecation: Method.setAccessible(boolean) is deprecated
+10:23:50 [WARNING] deprecation: Method.setAccessible(boolean) is deprecated
+10:23:50 [WARNING] deprecation: Method.setAccessible(boolean) is deprecated
+10:23:52 [INFO] --- maven-surefire-plugin:3.1.2:test ---
+10:23:52 Running hudson.model.RunTest
+10:23:53 Running hudson.model.RunTest
+10:23:54 Tests run: 142, Failures: 0, Errors: 0, Skipped: 3
+10:23:54 [INFO] BUILD SUCCESS
+10:23:55 [INFO] Total time: 12.481 s
+10:23:55 Archiving artifacts
+10:23:56 Finished: SUCCESS
