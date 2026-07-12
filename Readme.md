@@ -71,7 +71,7 @@ Returns the requested byte slice, with `Content-Length` set to the actual number
 make build
 make run-server           # proxies real ci.jenkins.io
 make run-server-fixture   # serves testdata/sample_consoletext.log instead — see note below
-make run-client BUILD=lastSuccessfulBuild
+make run-client
 make test
 ```
 
